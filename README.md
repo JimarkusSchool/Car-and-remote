@@ -50,64 +50,66 @@ Connection
 To connect the controller to the board we will need 3 cables, each of at least 2 metres, do this by connecting the male and female cords together, the length of the cable determines the length of how far the drones range will be so adjust to whatever you require, use tape to bundle the 3 cables together and to hold the individual cables between each other if necessary. The cables need to connect to each of these wires
 Step 3- Code
 We will run two different pages of code, one for each arduino, the controller segment will use this code.
-	Controller code
+	
+Controller code
 	
 	#include <stdio.h>
-#include <stdlib.h>
+	#include <stdlib.h>
+	void setup()
+	{
+	  Serial.begin(9600);
+	}
+	void loop()
+	{
+	  char str[10];
+	  itoa(map(analogRead(A0), 0, 1023, -255, 254), str, 10);
+	  itoa(map(analogRead(A1), 0, 1023, -255, 254), &str[5], 10);
+	  Serial.write(str, 10);
+	}
 
-void setup()
-{
-  Serial.begin(9600);
-}
 
-void loop()
-{
-  char str[10];
-  itoa(map(analogRead(A0), 0, 1023, -255, 254), str, 10);
-  itoa(map(analogRead(A1), 0, 1023, -255, 254), &str[5], 10);
-  Serial.write(str, 10);
-}
 
 Motor control code
-const int channel_a_enable  = 6;
-const int channel_a_input_1 = 4;
-const int channel_a_input_2 = 7;
-const int channel_b_enable  = 5;
-const int channel_b_input_3 = 3;
-const int channel_b_input_4 = 2;
 
-void setup()
-{
-  Serial.begin(9600);
+	const int channel_a_enable  = 6;
+	const int channel_a_input_1 = 4;
+	const int channel_a_input_2 = 7;
+	const int channel_b_enable  = 5;
+	const int channel_b_input_3 = 3;
+	const int channel_b_input_4 = 2;
 
-  pinMode( channel_a_enable, OUTPUT );  // Channel A enable
-  pinMode( channel_a_input_1, OUTPUT ); // Channel A input 1
-  pinMode( channel_a_input_2, OUTPUT ); // Channel A input 2
-  
-  pinMode( channel_b_enable, OUTPUT );  // Channel B enable
-  pinMode( channel_b_input_3, OUTPUT ); // Channel B input 3
-  pinMode( channel_b_input_4, OUTPUT ); // Channel B input 4
-  
-}
-int forward=0;
-int side=0;
-void loop()
-{
-  if(Serial.available()>=10)
-  {
-    char something[10];
-    Serial.readBytes(something, 10);
-    forward=atoi(something);
-    side=atoi(&something[5]);
-    if(forward<0)
-    {
-      float power=-forward*1/float(255);
-      if(side<0)
-      {
-        float left=(side+255)*1/float(255);
-        analogWrite(channel_a_enable, 255*power);
-        digitalWrite( channel_a_input_1, LOW);
-        digitalWrite( channel_a_input_2, HIGH);
+	void setup()
+	{
+	  Serial.begin(9600);
+
+	  pinMode( channel_a_enable, OUTPUT );  // Channel A enable
+	  pinMode( channel_a_input_1, OUTPUT ); // Channel A input 1
+	  pinMode( channel_a_input_2, OUTPUT ); // Channel A input 2
+
+	  pinMode( channel_b_enable, OUTPUT );  // Channel B enable
+	  pinMode( channel_b_input_3, OUTPUT ); // Channel B input 3
+	  pinMode( channel_b_input_4, OUTPUT ); // Channel B input 4
+
+	}
+	int forward=0;
+	int side=0;
+	void loop()
+	{
+	  if(Serial.available()>=10)
+	  {
+	    char something[10];
+	    Serial.readBytes(something, 10);
+	    forward=atoi(something);
+	    side=atoi(&something[5]);
+	    if(forward<0)
+	    {
+	      float power=-forward*1/float(255);
+	      if(side<0)
+	      {
+		float left=(side+255)*1/float(255);
+		analogWrite(channel_a_enable, 255*power);
+		digitalWrite( channel_a_input_1, LOW);
+		digitalWrite( channel_a_input_2, HIGH);
 
         analogWrite(channel_b_enable, 255*power*left);
         digitalWrite( channel_b_input_3, HIGH);
@@ -151,7 +153,5 @@ void loop()
         digitalWrite( channel_b_input_4, HIGH);        
       }
     }
-  }
-  
-}
-
+    }
+    }
