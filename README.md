@@ -51,12 +51,15 @@ To connect the controller to the board we will need 3 cables, each of at least 2
 Step 3- Code
 We will run two different pages of code, one for each arduino, the controller segment will use this code.
 	Controller code
-#include <stdio.h>
+	
+	#include <stdio.h>
 #include <stdlib.h>
+
 void setup()
 {
   Serial.begin(9600);
 }
+
 void loop()
 {
   char str[10];
@@ -64,6 +67,7 @@ void loop()
   itoa(map(analogRead(A1), 0, 1023, -255, 254), &str[5], 10);
   Serial.write(str, 10);
 }
+
 Motor control code
 const int channel_a_enable  = 6;
 const int channel_a_input_1 = 4;
@@ -148,6 +152,6 @@ void loop()
       }
     }
   }
+  
 }
-
 
