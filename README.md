@@ -151,7 +151,7 @@ Motor control code
         analogWrite(channel_b_enable, 255*power);
         digitalWrite( channel_b_input_3, LOW);
         digitalWrite( channel_b_input_4, HIGH);        
+       }
       }
-    }
-    }
+     }
     }
