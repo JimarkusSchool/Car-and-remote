@@ -47,6 +47,7 @@ Tightly screw in each of the wires with a small flathead screwdriver
 Connect a battery pack to the arduino for power
 Connection
 To connect the controller to the board we will need 3 cables, each of at least 2 metres, do this by connecting the male and female cords together, the length of the cable determines the length of how far the drones range will be so adjust to whatever you require, use tape to bundle the 3 cables together and to hold the individual cables between each other if necessary. The cables need to connect to each of these wires
+
 Step 3- Code
 We will run two different pages of code, one for each arduino, the controller segment will use this code.
 	
