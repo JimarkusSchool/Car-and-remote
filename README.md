@@ -17,17 +17,15 @@ Chassis base
 
 H-bridge (using a shield is easier but we will cover both in this tutorial)
 
-
-
 1 swivel caster
 
 2 AA battery packs
 
 Step 1- Chassis building:
 We need to connect  both the swivel caster and the motors/wheels to the car, lets start with the motors. Place the motor against the chassis, aligning it with each of the screw holes, Using a screw driver, tightly turn each of the screws until each of the motors are firmly attached to the board, The final result should resemble something like this.
-
+![jimmy](https://user-images.githubusercontent.com/57181085/67947772-80283e80-fc38-11e9-93a3-b2faafac91d6.jpg)
 Follow the same process with the swivel wheel to get a result resembling this.
-
+![pls](https://user-images.githubusercontent.com/57181085/67947692-51aa6380-fc38-11e9-84e4-ad47e73bc857.jpg)
 Step 2- Circuitry
 To connect the controller to the board we will need 3 cables of at least 2 metres, do this by connecting the male and female cords together, the length of the cable determines the length of how far the drones range will be so adjust to whatever you require
 On top of the chassis, place 2 battery packs and an arduino
@@ -35,7 +33,8 @@ On top of the chassis, place 2 battery packs and an arduino
 	Connect the joystick shield to the arduino
 Car
 Connect the H-bridge shield to the arduino
-	Connect each of the wires according to this diagram
+![Screenshot_20191031-234933_Gallery](https://user-images.githubusercontent.com/57181085/67948396-b7e3b600-fc39-11e9-9532-a44a1323c8df.jpg)
+	Connect each of the wires according to this outline:
 Left (image above) motor positive(RED)
 H-board screw connection 4
 Left motor negative
