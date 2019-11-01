@@ -1,7 +1,7 @@
 # Car-and-remote
 How to make a RC drone
 A tutorial on how to create a remote controlled car using arduinos.
-This guide outlines how to setup the controller and motorised components of an RC vehicle, this guide can be used as part of an outline for how to create a DIY remote control car. Now if you haven’t checked out the tutorial on how to create wireless communications I reckon you should check out Finn McClusky’s tutorial on bluetooth connections for these types of purposes. 
+This guide outlines how to setup the controller and motorised components of an RC vehicle, this guide can be used as part of an outline for how to create a DIY remote control car. Now if you haven’t checked out the tutorial on how to create wireless communications I reckon you should check out Finn McClusky’s tutorial on bluetooth connections to extend a project like this. 
 Components:
 2 arduinos (one for the controller and one for receiver
 
@@ -35,18 +35,27 @@ Car
 Connect the H-bridge shield to the arduino
 ![Screenshot_20191031-234933_Gallery](https://user-images.githubusercontent.com/57181085/67948396-b7e3b600-fc39-11e9-9532-a44a1323c8df.jpg)
 	Connect each of the wires according to this outline:
-Left (image above) motor positive(RED)
+
+Left (image above) motor positive(RED):
 H-board screw connection 4
-Left motor negative
+
+Left motor negative:
 H-board screw connection 3
-Right motor positive
+
+Right motor positive:
 H-board screw connection 2
-Right motor negative
+
+Right motor negative:
 H-board screw connection 1
+
 Tightly screw in each of the wires with a small flathead screwdriver
-Connect a battery pack to the arduino for power
+Connect each battery pack to each of the arduinos for power
 Connection
 To connect the controller to the board we will need 3 cables, each of at least 2 metres, do this by connecting the male and female cords together, the length of the cable determines the length of how far the drones range will be so adjust to whatever you require, use tape to bundle the 3 cables together and to hold the individual cables between each other if necessary. The cables need to connect to each of these wires
+
+Connect Ground one board too ground on another,
+Connect 1 on the Controller board to 0 on the Car board
+Connect 0 on the Controller board to 1 on the Car board
 
 Step 3- Code
 We will run two different pages of code, one for each arduino, the controller segment will use this code.
